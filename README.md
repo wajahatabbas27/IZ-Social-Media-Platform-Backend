@@ -6,4 +6,3 @@
     - Reactjs
     - Nodejs
 
-## setup    
