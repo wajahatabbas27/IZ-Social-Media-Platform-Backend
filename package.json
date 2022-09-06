@@ -1,0 +1,30 @@
+{
+  "name": "backend-mern-socialapp-iz",
+  "version": "1.0.0",
+  "description": "- This is the backend of the social media application and it is build using :   - MongoDb   - Expressjs   - Reactjs   - Nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wajahatabbas27/IZ-Social-Media-Platform-Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wajahatabbas27/IZ-Social-Media-Platform-Backend/issues"
+  },
+  "homepage": "https://github.com/wajahatabbas27/IZ-Social-Media-Platform-Backend#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "config": "^3.3.7",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "mongoose": "^6.5.4"
+  }
+}
