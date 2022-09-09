@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const bcrypt = require("bcrypt");
 const User = require("../models/user"); //model
+const auth = require("../middlewear/auth"); // middlewear hai yh
 
 //=====================================================
 // @route POST /api/auth
@@ -67,13 +68,25 @@ router.post(
   }
 );
 
-//=====================================================
+//================================================================================================================================
 // @route GET /api/auth
 // @desc GET User Data
 // @access Private
-//=====================================================
-router.get("/", (req, res) => {
-  res.status(200).json({ msg: "User Data for Login authorizer" });
+// Hm aik middlewear bnaeinge jo id nikalke hmein dega
+// Hm user ko findById se nikal leinge apne pass database se aur sara data return kradeinge
+// select lgane ke bd agr hm password mein 0 dedeinge to wo send nhi krega usko aur js mein hmne 0 dedia hai wo send nh krega yh
+//=================================================================================================================================
+router.get("/", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select({
+      password: 0,
+      __v: 0,
+    });
+    res.status(200).json({ user });
+  } catch (err) {
+    console.log("Error ==>>", err.message);
+    res.status(500).json({ msg: "Server Error" });
+  }
 });
 
 module.exports = router;

@@ -76,6 +76,18 @@
 - check =
 - validationResult =
 
+## Middlewear
+
+- Middlewear aik dafa bna rhe hain hm aur yh hr dafa chaleinge aur yh krega yh ke token jo header mein arha hoga usko check krega!
+- Middlewear create krrhe hain hm get user ke data ke liye
+- Middlewear krega yh ke hmein payload mein se id nikalke dega token se jo frontend se arha hoga hmare pass.
+- Jwt token jo frontend se arha hoga uske andar se id hai jo payload mein hai, yh krega yh ke us id ko get krke hmein dega.
+- Phr hm auth ke api mein findById se data get krleinge aur return kradeinge user ka data frontend pe.
+- Middlewear mein next ki callback bhi hogi hmare pass jo ke redirect krdegi uspe jahan hmare pass middlewear call hoa hoga!.
+- jwt.verify mein agr hm token aur signature/secret value pass kreinge to wo hmein payload return krdega.
+- payload ke andar jo user hai usko hm req.user ko pass krdeinge take mein api mein user ki id get krskein.
+- next() -- krta yh hai ke hm jhn middlewear use krrhe hnge wahan redirect krdega middlewear chalake
+
 ## Building APIs For Social Media Application:
 
 - Created the boiler structure for the Application by making config and adding mongoDB credentials;
@@ -119,7 +131,7 @@
 - const error = validationResult(req);
   if (!error.isEmpty()) return res.status(400).json({ error: error.array() });
 
-- StatusCode : - success - 200 - failure/error/bad-request - 400 - server Error - 500
+- StatusCode : - success - 200 - failure/error/bad-request - 400 - server Error - 500 -- unAuthorize request - 401 code-for-missing-token
 
 - Creating a user by using the Model User that is created from the Schema of the database.
 - Saving user inside database ---- user.save();
@@ -160,6 +172,13 @@
 - There will be a middlewear in between where we will verify the user, that it is the same user by jwt token verify method, that takes the payload and we created the userid as the payload so we will seperate the id from there and in database findById that user exists, if user exists so we will be sending all the data.
 
 - Verifying Email from the database and comparing the encrypted password by bcrypt.compare() method!
+
+- Mongodb ki queries mein hm agr select lgalein aur attributes ki value 0 dedein to unko leke nhi aega database se e.g
+- const user = await User.findById(req.user.id).select({
+  password: 0,
+  __v: 0,
+  });            ------------   yhn password aur ___v nhi leke aega database se hamre pass.
+
 
 - 1- users - signup api (post) - sending data from frontend user,email,password,date and saving that data inside the database && returning JWT.
 - 2- auth - login api (post) - sending email/password from frontend and authenticating from database that data exists && returning JWT to create a session.
