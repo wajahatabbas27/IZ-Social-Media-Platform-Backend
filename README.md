@@ -151,4 +151,16 @@
 - const checkUser = await User.findOne({ email }).select({ password: 0 });
   if (checkUser) return res.status(400).json({ msg: "User Alraedy exists" });
 
-- 1- users signup api (post) - sending data from frontend user,email,password,date and saving that data inside the database.
+- bcrypt has compare method which takes 2 inputs encrypted password and the normal password that is entered and then tells true or false whether they match or not.
+
+- jb bhi database se connect hona hoga hmne hm wo kaam kraenge try/catch mein.
+
+- Content-Type: application/json is just the content header. The content header is just information about the type of returned data, ex::JSON,image(png,jpg,etc..),html. Keep in mind, that JSON in JavaScript is an array or object.
+
+- There will be a middlewear in between where we will verify the user, that it is the same user by jwt token verify method, that takes the payload and we created the userid as the payload so we will seperate the id from there and in database findById that user exists, if user exists so we will be sending all the data.
+
+- Verifying Email from the database and comparing the encrypted password by bcrypt.compare() method!
+
+- 1- users - signup api (post) - sending data from frontend user,email,password,date and saving that data inside the database && returning JWT.
+- 2- auth - login api (post) - sending email/password from frontend and authenticating from database that data exists && returning JWT to create a session.
+- 3- auth - get user data (get) - verifying the user && getting the user data
