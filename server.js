@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
   res.status(200).json({
-    msg: "This is root api that is hitting from server localhost that is port",
+    msg: "This is IZ Social Media Root",
   });
 });
 

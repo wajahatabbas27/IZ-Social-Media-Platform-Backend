@@ -200,3 +200,6 @@
 
 ## Deployment Backend on Heruku
 
+- Deploying the backend on the Heruku using console
+- In settings, we need to choose buildpacks to nodejs
+- We can enable auto deploy as well.
