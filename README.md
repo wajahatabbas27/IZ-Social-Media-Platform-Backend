@@ -1,5 +1,7 @@
 # IZ Social Media Using MERN Stack 🏂
 
+- Deployment link:  https://iz-social-app-backend.herokuapp.com/
+
 - This is the backend of the social media application and it is build using :
   - MongoDb
   - Expressjs
