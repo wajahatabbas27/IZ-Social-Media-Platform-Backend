@@ -3,12 +3,11 @@
 - This is the backend of the social media application and it is build using :
   - MongoDb
   - Expressjs
-  - Reactjs
   - Nodejs
 
 ## Installing packages to write the backend code for this project!
 
-- npm i express -- To create the server, we need express
+- npm i express -- To create the server && routes, we need express
 - npm i config -- It is used to config files for us in development and in production as well
 - npm i express-validator -- To Validate data on the server side we use express validator
 - npm i mongoose -- It is used to connect the database, by using mongoose database is added
@@ -176,10 +175,28 @@
 - Mongodb ki queries mein hm agr select lgalein aur attributes ki value 0 dedein to unko leke nhi aega database se e.g
 - const user = await User.findById(req.user.id).select({
   password: 0,
-  __v: 0,
-  });            ------------   yhn password aur ___v nhi leke aega database se hamre pass.
+  **v: 0,
+  }); ------------ yhn password aur \_**v nhi leke aega database se hamre pass.
 
+- Fixed the error for the ip connection to the database, Access from anywhere in the network access.
+
+- post is the another collection in the database and it is connected to the user with the id of the user that we write in the model -- mongoose.Schema.Types.ObjectId.
+
+- post = await Post.findByIdAndUpdate(
+  req.params.id,
+  { $set: changes }, -- changes to be done!
+  { new: true }  -- new returns the updated data
+  ); -- updating a document
 
 - 1- users - signup api (post) - sending data from frontend user,email,password,date and saving that data inside the database && returning JWT.
 - 2- auth - login api (post) - sending email/password from frontend and authenticating from database that data exists && returning JWT to create a session.
-- 3- auth - get user data (get) - verifying the user && getting the user data
+- 3- auth - get user data (get) - verifying the user && getting the user data.
+- 4- posts - create a post (post) - user is logged in and has token and wants to craete the post and we will save that inside the database in the model that we have created.
+- 5- posts - Get all posts from the database - Getting All the post to show on the newsfeed of the social app.
+- 6- posts - Getting all posts from the database of a particular user - by providing the id of the user to get the particular users all posts.
+- 7- posts - Updating a particular post in the database and returning it using its posts-id.
+- 8- posts - Deleting a particular post in the database by its Id and getting the response.
+
+
+## Deployment Backend on Heruku
+
