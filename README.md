@@ -15,6 +15,7 @@
 - npm i mongoose -- It is used to connect the database, by using mongoose database is added
 - npm i jsonwebtoken -- jwt for creating sessions on clientside by saving header(tokenn-jwt) in local storage.
 - npm i bcrypt -- package for hashing password && authenticating password
+- npm i cors -- cross origin access to the apis so cors is used!
 
 ## Setting up Database MongoDB:
 
